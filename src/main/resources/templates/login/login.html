@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
+
+  <link rel="stylesheet" href="/css/login.css">
+
+  <title>Home</title>
+</head>
+
+<body>
+  <header class="header">
+    <section class="container">
+      <div class="title__container">
+        <h1>Já comeu uma fruta hoje?</h1>
+      </div>
+    </section>
+    <section class="container">
+      <form method="post" action="/login" class="form__container" th:object="${pessoa}">
+        <input class="input" type="text" placeholder="usuário" th:field="*{name}">
+        <input class="input" type="password" placeholder="senha">
+        <button type="submit" class="button-login">A gente te ajuda</button>
+      </form>
+    </section>
+    <section class="container">
+      <div class="cadastro__link grid">
+        <p>Não possui cadastro?</p>
+        <a th:href="@{/register}">Clique aqui!</a>
+      </div>
+    </section>
+    </div>
+  </header>
+  <!-- LUCIDE -->
+  <div th:replace="fragment/fragment :: frag__lucide"></div>
+</body>

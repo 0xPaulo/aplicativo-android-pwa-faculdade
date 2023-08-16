@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
+  <link rel="stylesheet" href="css/style.css">
+  <title>Home</title>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <div th:replace="fragment/fragment :: frag__header"></div>
+  <!-- NAVBAR -->
+  <div th:replace="fragment/fragment :: frag__navbar"></div>
+  <!-- NEWS -->
+  <section class="container">
+    <div class="new__container grid">
+      <div class="news_content">
+        <h1>Uma fruta saborosa e nutritiva que pode ser facilmente incluída na alimentação</h1>
+        <a href="#" class="button-news">Confira</a>
+      </div>
+      <div class="news__container__image">
+        <img class="news__img" src="img/mascote.png" alt="mascote do app">
+      </div>
+    </div>
+  </section>
+  <!-- CATEGORY -->
+  <div th:replace="fragment/fragment :: frag__category"></div>
+  <!-- RECOMMENDATION -->
+  <div th:replace="fragment/fragment :: frag__recommendation"></div>
+  <!-- LUCIDE -->
+  <div th:replace="fragment/fragment :: frag__lucide"></div>
+</body>
+
+</html>

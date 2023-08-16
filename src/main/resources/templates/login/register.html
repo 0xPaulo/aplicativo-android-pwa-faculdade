@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
+
+  <link rel="stylesheet" href="/css/cadastro.css">
+
+  <title>Home</title>
+</head>
+
+<body>
+  <header class="header">
+    <section class="container">
+      <div class="title__container">
+        <h1>Criar sua conta</h1>
+      </div>
+    </section>
+  </header>
+  <section class="container">
+    <form method="post" action="/registerUser" th:object="${pessoa}" class="form__container">
+      <div th:if="${message}" class="alert-warning">
+        <p th:text="${message}"></p>
+      </div>
+      <input class="input" type="text" placeholder="usuário" th:field="*{name}">
+      <input class="input" type="text" placeholder="email" th:field="*{email}">
+      <input class="input" type="password" placeholder="senha" th:field="*{senha}">
+      <button type="submit" class="button-login">Cadastrar</button>
+    </form>
+  </section>
+  <section class="container">
+    <div class="cadastro__link grid">
+      <p>Voltar ao login</p>
+      <a th:href="@{/}">Clique aqui!</a>
+    </div>
+  </section>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>

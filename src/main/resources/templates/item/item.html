@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="public/images/favicon.png" type="image/x-icon" />
+  <link rel="stylesheet" href="/css/item.css">
+  <title>Item</title>
+</head>
+
+<section class="container" id="item__header">
+  <div class="header__item__container">
+    <a th:href="@{/list-all}" id="back-to-list">
+      <i data-lucide="chevron-left"></i>
+    </a>
+    <a href="#">
+      <i data-lucide="heart" class="item__icon"></i>
+    </a>
+  </div>
+  <!-- END MAIN -->
+  <div class="container__img__item">
+    <img src="img/uva.png" alt="">
+  </div>
+  <h1 class="name__item">Nome do Item</h1>
+</section>
+<!-- END ITEM -->
+
+<!-- RICO EM VITAMINAS -->
+<!-- RICO EM VITAMINAS -->
+<!-- RICO EM VITAMINAS -->
+<!-- RICO EM VITAMINAS -->
+<!-- RICO EM VITAMINAS -->
+<form method="post" th:action="@{/save/{id}(id=${item.id})}" th:object="${item}">
+  <h2>Nome do item</h2>
+  <h4 th:text="${item.name}"></h4>
+  <section class="container" id="item__description">
+    <div class="item__description__container">
+      <h2>Detalhes</h2>
+      <p>Lorem</p>
+    </div>
+  </section>
+  <!-- END DESCRIPTION -->
+
+  <!-- NAVBAR -->
+  <div th:fragment="frag__navbar">
+    <div class="header__navbar">
+      <nav class="navbar container">
+        <a th:href="@{/index}">
+          <i data-lucide="home" class="navbar__home"></i>
+        </a>
+        <a th:href="@{my-list}">
+          <i data-lucide="list-checks" class="navbar__icon"></i>
+        </a>
+        <div class="navbar__content-circle">
+          <button type="submit">
+            <i data-lucide="check" class="navbar__search"></i>
+          </button>
+        </div>
+        <div class="navbar__circle-shadow"></div>
+        <div class="navbar__circle"></div>
+      </nav>
+    </div>
+  </div>
+</form>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  lucide.createIcons();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
+  <link rel="stylesheet" href="/css/list.css">
+  <title>List</title>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <div th:fragment="frag__header">
+    <div class="container header__info">
+      <div class="header__user">
+        <h2>Escolha seus itens,</h2>
+        <p>Fulano</p>
+      </div>
+      <div class="header__points">
+        <h2>Seus pontos,</h2>
+        <p>1250</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <div th:replace="fragment/fragment :: frag__navbar"></div>
+
+  <!-- CATEGORY -->
+  <div th:replace="fragment/fragment :: frag__category"></div>
+
+  <!-- RECOMMENDATION -->
+  <section class="container">
+    <h2 class="section__title">Recomendações do dia</h2>
+
+    <div class="fruits__container grid">
+      <div th:each=" variavel: ${list__all}">
+        <a th:href="@{item-{id}(id=${variavel.id})}" class="fruits__card fruits__one">
+          <!-- <i class="fav" data-lucide="heart"></i> -->
+          <img th:src="@{${'/img/' + variavel.name + '.png'}}" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LUCIDE -->
+  <div th:replace="fragment/fragment :: frag__lucide"></div>
+</body>
+
+</html>

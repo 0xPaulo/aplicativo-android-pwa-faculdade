@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="shortcut icon" href="public/images/favicon.png" type="image/x-icon" />
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <title>Home</title>
+</head>
+
+<body>
+  <header class="header">
+    <div th:fragment="frag__header">
+      <div class="container header__info">
+        <div class="header__user">
+          <h2>Bem vindo,</h2>
+          <p>Fulano</p>
+        </div>
+        <div class="header__points">
+          <h2>Seus pontos,</h2>
+          <p>1250</p>
+        </div>
+      </div>
+    </div>
+    <!-- FIM HEADER -->
+
+    <div th:fragment="frag__navbar">
+      <div class="header__navbar">
+        <nav class="navbar container">
+          <a th:href="@{/index}">
+            <i data-lucide="home" class="navbar__home"></i>
+          </a>
+          <a th:href="@{my-list}">
+            <i data-lucide="list-checks" class="navbar__icon"></i>
+          </a>
+          <div class="navbar__content-circle">
+            <a th:href="@{list}">
+              <i data-lucide="search" class="navbar__search"></i>
+            </a>
+          </div>
+          <div class="navbar__circle-shadow"></div>
+          <div class="navbar__circle"></div>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <!-- FIM NAVBAR -->
+
+  <main>
+    <section class="container">
+      <div class="new__container grid">
+        <div class="news_content">
+          <h1>Fique saudável com 5 porções de frutas diariamente!</h1>
+          <a href="#" class="button-news">Confira</a>
+        </div>
+        <div class="news__container__image">
+          <img class="news__img" src="public/images/mascote.png" alt="mascote do app">
+        </div>
+      </div>
+    </section>
+    <!-- FIM NOTICIA -->
+
+    <div th:fragment="frag__category">
+      <section class="container">
+        <h2 class="section__title">Categorias</h2>
+        <div class="categorias__container grid">
+          <div class="categorias__content">
+            <a th:href="@{/}" class="categorias__card categorias__card-fruits">
+              <i data-lucide="apple"></i>
+            </a>
+            <h3 class="categorias__name">
+              Frutas
+            </h3>
+          </div>
+          <div class="categorias__content">
+            <div class="categorias__card categorias__card-vegetables">
+              <i data-lucide="leafy-green"></i>
+            </div>
+            <h3 class="categorias__name">
+              Verduras
+            </h3>
+          </div>
+          <div class="categorias__content">
+            <div class="categorias__card categorias__card-fish">
+              <i data-lucide="fish"></i>
+            </div>
+            <h3 class="categorias__name">
+              Peixes
+            </h3>
+          </div>
+          <div class="categorias__content">
+            <div class="categorias__card categorias__card-cereais">
+              <i data-lucide="wheat"></i>
+            </div>
+            <h3 class="categorias__name">
+              Cereais
+            </h3>
+          </div>
+        </div>
+    </div>
+    </section>
+    <!-- FIM CATEGORIES -->
+
+    <div th:fragment="frag__recommendation">
+      <section class="container">
+        <h2 class="section__title">Recomendações do dia</h2>
+
+        <div class="fruits__container grid">
+          <div class="fruits__card fruits__one">
+            <i class="fav" data-lucide="heart"></i>
+            <img src="img/laranja.png" alt="laranja">
+          </div>
+          <div class="fruits__card fruits__two">
+            <i class="fav" data-lucide="heart"></i>
+            <img src="img/uva.png" alt="laranja">
+          </div>
+          <div class="fruits__card fruits__three">
+            <i class="fav" data-lucide="heart"></i>
+            <img src="img/melancia.png" alt="laranja">
+          </div>
+          <div class="fruits__card fruits__four">
+            <i class="fav" data-lucide="heart"></i>
+            <img src="img/brocolis.png" alt="laranja">
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- FIM FRUTAS -->
+
+  </main>
+  <div th:fragment="frag__lucide">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+  </div>
+</body>
+
+</html>
