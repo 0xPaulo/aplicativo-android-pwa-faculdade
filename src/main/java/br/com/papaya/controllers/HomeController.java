@@ -24,11 +24,4 @@ public class HomeController {
     return mv;
   }
 
-  @GetMapping("/list-all")
-  public ModelAndView lista() {
-    ModelAndView mv = new ModelAndView();
-    mv.setViewName("item/list-all.html");
-    return mv;
-  }
-
 }

@@ -37,8 +37,7 @@
     <div class="fruits__container grid">
       <div th:each=" variavel: ${list__all}">
         <a th:href="@{item-{id}(id=${variavel.id})}" class="fruits__card fruits__one">
-          <!-- <i class="fav" data-lucide="heart"></i> -->
-          <img th:src="@{${'/img/' + variavel.name + '.png'}}" />
+          <img th:src="@{${'/img/img-bd/' + variavel.name + '.png'}}" />
         </a>
       </div>
     </div>

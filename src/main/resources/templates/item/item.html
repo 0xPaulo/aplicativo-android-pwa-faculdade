@@ -11,18 +11,15 @@
 
 <section class="container" id="item__header">
   <div class="header__item__container">
-    <a th:href="@{/list-all}" id="back-to-list">
+    <a th:href="@{/list}" id="back-to-list">
       <i data-lucide="chevron-left"></i>
-    </a>
-    <a href="#">
-      <i data-lucide="heart" class="item__icon"></i>
     </a>
   </div>
   <!-- END MAIN -->
-  <div class="container__img__item">
-    <img src="img/uva.png" alt="">
+  <div class="container__img__item" th:object="${item}">
+    <img th:src="@{${'/img/img-bd/' + item.name + '.png'}}" />
   </div>
-  <h1 class="name__item">Nome do Item</h1>
+  <h1 class="name__item" th:text="${item.name}"></h1>
 </section>
 <!-- END ITEM -->
 
@@ -32,12 +29,10 @@
 <!-- RICO EM VITAMINAS -->
 <!-- RICO EM VITAMINAS -->
 <form method="post" th:action="@{/save/{id}(id=${item.id})}" th:object="${item}">
-  <h2>Nome do item</h2>
-  <h4 th:text="${item.name}"></h4>
   <section class="container" id="item__description">
     <div class="item__description__container">
       <h2>Detalhes</h2>
-      <p>Lorem</p>
+      <p th:text="${item.description}"></p>
     </div>
   </section>
   <!-- END DESCRIPTION -->
@@ -52,11 +47,13 @@
         <a th:href="@{my-list}">
           <i data-lucide="list-checks" class="navbar__icon"></i>
         </a>
-        <div class="navbar__content-circle">
-          <button type="submit">
-            <i data-lucide="check" class="navbar__search"></i>
-          </button>
-        </div>
+        <button type="submit" class="navbar__content-circle">
+          <i th:attr="data-lucide=${selected}" class="navbar__search"></i>
+        </button>
+
+        <!-- <button type="submit" class="navbar__content-circle">
+          <i data-lucide="check" class="navbar__search"></i>
+        </button> -->
         <div class="navbar__circle-shadow"></div>
         <div class="navbar__circle"></div>
       </nav>

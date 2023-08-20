@@ -63,24 +63,6 @@ public class UserController {
     return mv;
   }
 
-  // @PostMapping("cadastrar-usuario")
-  // public ModelAndView cadastrar(Usuario usuario) {
-  // ModelAndView mv = new ModelAndView();
-  // try {
-  // serviceUsuario.salvarUsuario(usuario);
-  // mv.setViewName("redirect:/");
-  // } catch (EmailExistsException e) {
-  // mv.addObject("emailError", e.getMessage());
-  // mv.setViewName("login_pasta/cadastro");
-  // } catch (UserExistsException e) {
-  // mv.addObject("emailError", e.getMessage());
-  // mv.setViewName("login_pasta/cadastro");
-  // } catch (Exception e) {
-  // mv.setViewName("login_pasta/erro");
-  // }
-  // return mv;
-  // }
-
   @PostMapping("/login")
   public String fazerLogar(@ModelAttribute("pessoa") Pessoa pessoa) {
     if (sericeLogin.pessoaExiste(pessoa.getName())) {

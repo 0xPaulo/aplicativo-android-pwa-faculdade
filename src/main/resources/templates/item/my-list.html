@@ -22,7 +22,7 @@
     <div class="fruits__container grid">
       <div th:each=" variavel: ${my__list}">
         <a th:href="@{item-{id}(id=${variavel.id})}" class="fruits__card fruits__white">
-          <img th:src="@{${'/img/' + variavel.name + '.png'}}" alt="">
+          <img th:src="@{${'/img/img-bd/' + variavel.name + '.png'}}" alt="">
         </a>
       </div>
     </div>

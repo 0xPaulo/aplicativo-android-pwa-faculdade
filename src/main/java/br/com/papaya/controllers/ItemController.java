@@ -25,7 +25,6 @@ public class ItemController {
   @Autowired
   private ListaDao listarepository;
 
-
   @GetMapping("/salvar")
   public ModelAndView addToList(Lista lista) {
     ModelAndView mv = new ModelAndView();
@@ -51,6 +50,7 @@ public class ItemController {
       Item item = new Item();
       item.setId(id);
       lista.setItem(item);
+      lista.setSelected(true);
       listarepository.save(lista);
       mv.setViewName("redirect:/my-list");
     }
@@ -61,6 +61,22 @@ public class ItemController {
   public ModelAndView showItem(@PathVariable("id") long id) {
     ModelAndView mv = new ModelAndView();
     mv.setViewName("item/item.html");
+
+    Boolean selected = listarepository.findSelectedById(id); // Aqui você obtém o valor booleano ou possivelmente nulo
+
+    if (selected != null) {
+      if (selected) {
+        mv.addObject("selected", "x");
+        System.out.println("ta vindo => " + selected);
+      } else {
+        mv.addObject("selected", "check");
+        System.out.println("ta vindo => " + selected);
+      }
+    } else {
+      mv.addObject("selected", "check");
+      System.out.println("ta vindo => " + selected);
+    }
+
     Item item = itemrepository.getReferenceById(id);
     mv.addObject("item", item);
     return mv;

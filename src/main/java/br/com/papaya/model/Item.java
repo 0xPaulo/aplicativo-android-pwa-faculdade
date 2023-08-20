@@ -15,14 +15,8 @@ public class Item {
   private String name;
   @Column(name = "item_category")
   private String category;
-  @Column(name = "item_location")
-  private String locationImage;
   @Column(name = "item_description", length = 1500)
   private String description;
-  @Column(name = "item_is_selected")
-  private boolean is_selected;
-  @Column(name = "item_is_favorite")
-  private boolean is_favorite;
   @Column(name = "item_kcal")
   private String kcal;
   @Column(name = "item_points")
@@ -34,14 +28,6 @@ public class Item {
 
   public void setKcal(String kcal) {
     this.kcal = kcal;
-  }
-
-  public int getPoints() {
-    return points;
-  }
-
-  public void setPoints(int points) {
-    this.points = points;
   }
 
   public long getId() {
@@ -68,14 +54,6 @@ public class Item {
     this.category = category;
   }
 
-  public String getLocationImage() {
-    return locationImage;
-  }
-
-  public void setLocationImage(String locationImage) {
-    this.locationImage = locationImage;
-  }
-
   public String getDescription() {
     return description;
   }
@@ -84,20 +62,13 @@ public class Item {
     this.description = description;
   }
 
-  public boolean isIs_selected() {
-    return is_selected;
+  public int getPoints() {
+    return points;
   }
 
-  public void setIs_selected(boolean is_selected) {
-    this.is_selected = is_selected;
+  public void setPoints(int points) {
+    this.points = points;
   }
 
-  public boolean isIs_favorite() {
-    return is_favorite;
-  }
-
-  public void setIs_favorite(boolean is_favorite) {
-    this.is_favorite = is_favorite;
-  }
 
 }

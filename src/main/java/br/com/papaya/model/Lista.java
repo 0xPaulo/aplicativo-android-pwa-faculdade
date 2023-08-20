@@ -1,5 +1,6 @@
 package br.com.papaya.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +21,9 @@ public class Lista {
   @ManyToOne
   @JoinColumn(name = "item_id")
   private Item item;
+
+  @Column(name = "selected")
+  private Boolean selected;
 
   public Long getId() {
     return id;
@@ -45,4 +49,11 @@ public class Lista {
     this.item = item;
   }
 
+  public Boolean getSelected() {
+    return selected;
+  }
+
+  public void setSelected(Boolean selected) {
+    this.selected = selected;
+  }
 }
