@@ -21,6 +21,9 @@
     </section>
     <section class="container">
       <form method="post" action="/login" class="form__container" th:object="${pessoa}">
+        <div th:if="${msgErro}" class="alert-warning">
+          <p th:text="${msgErro}"></p>
+        </div>
         <input class="input" type="text" placeholder="usuário" th:field="*{name}">
         <input class="input" type="password" placeholder="senha">
         <button type="submit" class="button-login">A gente te ajuda</button>

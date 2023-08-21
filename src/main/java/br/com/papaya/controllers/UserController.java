@@ -1,7 +1,10 @@
 package br.com.papaya.controllers;
 
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+
 import br.com.papaya.Exceptions.EmailExistsException;
 import br.com.papaya.Exceptions.EmailNotNullException;
 import br.com.papaya.Exceptions.GenericException;
@@ -9,6 +12,7 @@ import br.com.papaya.Exceptions.NameNotNullException;
 import br.com.papaya.Exceptions.PasswordNotNullExeception;
 import br.com.papaya.Exceptions.UserExistsException;
 import br.com.papaya.model.Pessoa;
+import br.com.papaya.service.ServiceFindIdByName;
 import br.com.papaya.service.ServiceLoginUser;
 import br.com.papaya.service.ServiceRegisterUser;
 
@@ -19,11 +23,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class UserController {
+  @Autowired
+  ServiceFindIdByName serviceFindIdByName;
 
   @Autowired
   ServiceRegisterUser serviceRegister;
   @Autowired
-  ServiceLoginUser sericeLogin;
+  ServiceLoginUser serviceLogin;
 
   @GetMapping("/register")
   public ModelAndView paginaCadastro() {
@@ -64,11 +70,16 @@ public class UserController {
   }
 
   @PostMapping("/login")
-  public String fazerLogar(@ModelAttribute("pessoa") Pessoa pessoa) {
-    if (sericeLogin.pessoaExiste(pessoa.getName())) {
+  public String fazerLogar(@ModelAttribute("pessoa") Pessoa pessoa, Model model, HttpSession session) {
+    if (serviceLogin.pessoaExiste(pessoa.getName())) {
+      session.setAttribute("usuarioLogado", pessoa.getName());
+      Pessoa variavel = serviceFindIdByName.encontrarIdPorNome(pessoa.getName());
+      session.setAttribute("id", variavel.getId());
+      System.out.println("---------------------" + session.getAttribute("id"));
       return "home/index";
     } else {
-      return "/login/register.html";
+      model.addAttribute("msgErro", "Usuário ou senha inválidos. Tente novamente.");
+      return "/login/login.html";
     }
   }
 }

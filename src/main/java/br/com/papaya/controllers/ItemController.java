@@ -3,6 +3,7 @@ package br.com.papaya.controllers;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,13 @@ import br.com.papaya.DAO.ItemDao;
 import br.com.papaya.DAO.ListaDao;
 import br.com.papaya.model.Item;
 import br.com.papaya.model.Lista;
+import br.com.papaya.model.Pessoa;
 
 @Controller
 public class ItemController {
+
+  @Autowired
+  private HttpSession session;
 
   @Autowired
   private ItemDao itemrepository;
@@ -33,27 +38,19 @@ public class ItemController {
     return mv;
   }
 
-  @Transactional
-  @PostMapping("save/{id}")
-  public ModelAndView salvarItem(@PathVariable("id") long id) {
+  @GetMapping("/my-list")
+  public ModelAndView myList() {
     ModelAndView mv = new ModelAndView();
-    // Verifique se existe uma entidade Lista com um item associado ao ID
-    // especificado
-    boolean existsByItemId = listarepository.existsByItemId(id);
+    mv.setViewName("/item/my-list.html");
 
-    if (existsByItemId) {
-      // Exclua a lista que contém o item com o ID especificado
-      listarepository.deleteByItemId(id);
-      mv.setViewName("redirect:/my-list");
-    } else {
-      Lista lista = new Lista();
-      Item item = new Item();
-      item.setId(id);
-      lista.setItem(item);
-      lista.setSelected(true);
-      listarepository.save(lista);
-      mv.setViewName("redirect:/my-list");
-    }
+    Long userId = (Long) session.getAttribute("id");
+
+    List<Lista> listaItens = listarepository.findByPessoaId(userId);
+    List<Item> itens = listaItens.stream()
+        .map(Lista::getItem)
+        .collect(Collectors.toList());
+
+    mv.addObject("my__list", itens);
     return mv;
   }
 
@@ -67,10 +64,8 @@ public class ItemController {
     if (selected != null) {
       if (selected) {
         mv.addObject("selected", "x");
-        System.out.println("ta vindo => " + selected);
       } else {
         mv.addObject("selected", "check");
-        System.out.println("ta vindo => " + selected);
       }
     } else {
       mv.addObject("selected", "check");
@@ -82,25 +77,39 @@ public class ItemController {
     return mv;
   }
 
-  @GetMapping("/my-list")
-  public ModelAndView myList() {
-    ModelAndView mv = new ModelAndView();
-    mv.setViewName("/item/my-list.html");
-
-    List<Lista> listaItens = listarepository.findAll();
-    List<Item> itens = listaItens.stream()
-        .map(Lista::getItem)
-        .collect(Collectors.toList());
-
-    mv.addObject("my__list", itens);
-    return mv;
-  }
-
   @GetMapping("/list")
   public ModelAndView listarAll() {
     ModelAndView mv = new ModelAndView();
     mv.setViewName("/item/list-all.html");
     mv.addObject("list__all", itemrepository.findAll());
+    return mv;
+  }
+
+  @Transactional
+  @PostMapping("save/{id}")
+  public ModelAndView salvarItem(@PathVariable("id") long id, HttpSession session) {
+    ModelAndView mv = new ModelAndView();
+    // Verifique se existe uma entidade Lista com um item associado ao ID
+    // especificado
+    boolean existsByItemId = listarepository.existsByItemId(id);
+
+    if (existsByItemId) {
+      // Exclua a lista que contém o item com o ID especificado
+      listarepository.deleteByItemId(id);
+      mv.setViewName("redirect:/my-list");
+    } else {
+      Lista lista = new Lista();
+      Item item = new Item();
+      Pessoa pessoa = new Pessoa();
+      Long pessoaID = (Long) session.getAttribute("id");
+      pessoa.setId(pessoaID);
+      item.setId(id);
+      lista.setPessoa(pessoa);
+      lista.setItem(item);
+      lista.setSelected(true);
+      listarepository.save(lista);
+      mv.setViewName("redirect:/my-list");
+    }
     return mv;
   }
 

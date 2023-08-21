@@ -12,4 +12,8 @@ public interface PessoaDao extends JpaRepository<Pessoa, Long> {
 
   @Query("select i from Pessoa i where i.email = :email")
   public Pessoa findByEmail(String email);
+
+  @Query("select i from Pessoa i where i.name = :name")
+  public Pessoa findIdByName(String name);
+
 }

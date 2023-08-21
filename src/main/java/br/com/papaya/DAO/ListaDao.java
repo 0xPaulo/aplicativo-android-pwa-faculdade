@@ -1,5 +1,7 @@
 package br.com.papaya.DAO;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,5 +16,7 @@ public interface ListaDao extends JpaRepository<Lista, Long> {
   boolean existsByItemId(long id);
 
   void deleteByItemId(long id);
+
+  List<Lista> findByPessoaId(long teste);
 
 }
