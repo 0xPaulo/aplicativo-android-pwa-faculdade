@@ -58,9 +58,7 @@ public class ItemController {
   public ModelAndView showItem(@PathVariable("id") long id) {
     ModelAndView mv = new ModelAndView();
     mv.setViewName("item/item.html");
-
-    Boolean selected = listarepository.findSelectedById(id); // Aqui você obtém o valor booleano ou possivelmente nulo
-
+    Boolean selected = listarepository.findSelectedById(id);
     if (selected != null) {
       if (selected) {
         mv.addObject("selected", "x");
@@ -69,9 +67,7 @@ public class ItemController {
       }
     } else {
       mv.addObject("selected", "check");
-      System.out.println("ta vindo => " + selected);
     }
-
     Item item = itemrepository.getReferenceById(id);
     mv.addObject("item", item);
     return mv;

@@ -17,4 +17,8 @@ public class ItemService {
   public List<Item> listarItems() {
     return itemRepository.findAll();
   }
+
+  public List<Item> listarFrutas(String category) {
+    return itemRepository.findByCategory(category);
+  }
 }

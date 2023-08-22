@@ -69,7 +69,7 @@
         <h2 class="section__title">Categorias</h2>
         <div class="categorias__container grid">
           <div class="categorias__content">
-            <a th:href="@{/}" class="categorias__card categorias__card-fruits">
+            <a th:href="@{filtro-{i}(i=${'frutas'})}" class="categorias__card categorias__card-fruits">
               <i data-lucide="apple"></i>
             </a>
             <h3 class="categorias__name">
@@ -77,25 +77,25 @@
             </h3>
           </div>
           <div class="categorias__content">
-            <div class="categorias__card categorias__card-vegetables">
+            <a th:href="@{filtro-{i}(i=${'verduras'})}" class="categorias__card categorias__card-vegetables">
               <i data-lucide="leafy-green"></i>
-            </div>
+            </a>
             <h3 class="categorias__name">
               Verduras
             </h3>
           </div>
           <div class="categorias__content">
-            <div class="categorias__card categorias__card-fish">
+            <a th:href="@{filtro-{i}(i=${'peixes'})}" class="categorias__card categorias__card-fish">
               <i data-lucide="fish"></i>
-            </div>
+            </a>
             <h3 class="categorias__name">
               Peixes
             </h3>
           </div>
           <div class="categorias__content">
-            <div class="categorias__card categorias__card-cereais">
+            <a th:href="@{filtro-{i}(i=${'cereais'})}" class="categorias__card categorias__card-cereais">
               <i data-lucide="wheat"></i>
-            </div>
+            </a>
             <h3 class="categorias__name">
               Cereais
             </h3>
