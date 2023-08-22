@@ -117,7 +117,7 @@ h2,
   display: flex;
   justify-content: space-between;
 }
-.name__item{
+.name__item {
   margin-top: var(--mb-12);
 }
 .fav {
@@ -203,4 +203,7 @@ h2,
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.item__description__container p {
+  margin-bottom: var(--header-height);
 }
