@@ -41,7 +41,7 @@ public class ItemController {
   @GetMapping("/my-list")
   public ModelAndView myList() {
     ModelAndView mv = new ModelAndView();
-    mv.setViewName("/item/my-list.html");
+    mv.setViewName("item/my-list.html");
 
     Long userId = (Long) session.getAttribute("id");
 
@@ -76,7 +76,7 @@ public class ItemController {
   @GetMapping("/list")
   public ModelAndView listarAll() {
     ModelAndView mv = new ModelAndView();
-    mv.setViewName("/item/list-all.html");
+    mv.setViewName("item/list-all.html");
     mv.addObject("list__all", itemrepository.findAll());
     return mv;
   }
