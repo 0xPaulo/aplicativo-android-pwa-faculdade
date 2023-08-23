@@ -1,1 +1,1 @@
-web: java -jar papaya/target/papaya.jar
+web: java -jar target/papaya-0.0.1-SNAPSHOT.jar papaya.jar
