@@ -1,1 +1,1 @@
-web: java -jar target/papaya.jar
+web: java -jar papaya/target/papaya.jar
