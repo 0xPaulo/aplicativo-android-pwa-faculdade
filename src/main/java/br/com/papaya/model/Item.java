@@ -21,6 +21,8 @@ public class Item {
   private String kcal;
   @Column(name = "item_points")
   private int points;
+  @Column(name = "selected")
+  private boolean selected;
 
   public String getKcal() {
     return kcal;
@@ -69,6 +71,5 @@ public class Item {
   public void setPoints(int points) {
     this.points = points;
   }
-
 
 }
