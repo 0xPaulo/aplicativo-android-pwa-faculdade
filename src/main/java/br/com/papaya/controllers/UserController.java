@@ -71,13 +71,18 @@ public class UserController {
 
   @PostMapping("/login")
   public String fazerLogar(@ModelAttribute("pessoa") Pessoa pessoa, Model model, HttpSession session) {
-    if (serviceLogin.pessoaExiste(pessoa.getName())) {
-      session.setAttribute("usuarioLogado", pessoa.getName());
-      Pessoa variavel = serviceFindIdByName.encontrarIdPorNome(pessoa.getName());
-      session.setAttribute("id", variavel.getId());
-      System.out.println("---------------------" + session.getAttribute("id"));
-      return "home/index";
-    } else {
+    try {
+      if (serviceLogin.pessoaExiste(pessoa.getName(), pessoa.getSenha())) {
+        session.setAttribute("usuarioLogado", pessoa.getName());
+        Pessoa var = serviceFindIdByName.encontrarIdPorNome(pessoa.getName());
+        session.setAttribute("id", var.getId());
+        System.out.println("---------------------" + session.getAttribute("id"));
+        return "home/index";
+      } else {
+        model.addAttribute("msgErro", "Usuário ou senha inválidos. Tente novamente.");
+        return "/login/login.html";
+      }
+    } catch (Exception e) {
       model.addAttribute("msgErro", "Usuário ou senha inválidos. Tente novamente.");
       return "/login/login.html";
     }

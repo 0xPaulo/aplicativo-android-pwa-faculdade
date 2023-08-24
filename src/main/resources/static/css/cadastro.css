@@ -63,7 +63,7 @@ input {
 body {
   background-color: var(--body-color);
   color: var(--text-color);
-  margin-bottom: 4rem;
+  /* margin-bottom: 4rem; */
 }
 
 h1,
@@ -100,6 +100,10 @@ button {
   font-size: var(--small-font-size);
   padding: var(--mb-4);
 }
+.main-container {
+  height: 100vh;
+  align-content: center;
+}
 .container {
   max-width: 968px;
   margin-left: var(--mb-24);
@@ -109,7 +113,7 @@ button {
   display: grid;
 }
 section {
-  padding: 20% 0 1rem;
+  padding: 3rem 0 1rem;
 }
 h1,
 .h1 {
@@ -174,4 +178,8 @@ h2,
 .cadastro__link a {
   text-align: center;
   color: var(--confirm-color);
+}
+.header__item__container {
+  position: absolute;
+  top: 5%;
 }
