@@ -109,4 +109,23 @@ public class ItemController {
     return mv;
   }
 
+  @GetMapping("/item-104")
+  public ModelAndView pera() {
+    ModelAndView mv = new ModelAndView();
+    mv.setViewName("item/pera.html");
+    Boolean selected = listarepository.findSelectedById((long) 104);
+    if (selected != null) {
+      if (selected) {
+        mv.addObject("selected", "x");
+      } else {
+        mv.addObject("selected", "check");
+      }
+    } else {
+      mv.addObject("selected", "check");
+    }
+    Item item = itemrepository.getReferenceById((long) 104);
+    mv.addObject("item", item);
+    return mv;
+  }
+
 }

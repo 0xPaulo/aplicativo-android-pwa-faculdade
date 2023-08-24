@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="public/images/favicon.png" type="image/x-icon" />
+  <link rel="stylesheet" href="/css/pera.css">
+  <title>Item</title>
+</head>
+
+<section class="container" id="item__header">
+  <div class="header__item__container">
+    <a th:href="@{/list}" id="back-to-list">
+      <i data-lucide="chevron-left"></i>
+    </a>
+  </div>
+  <!-- END MAIN -->
+  <div class="container__img__item" th:object="${item}">
+    <img th:src="@{${'/img/img-bd/' + item.name + '.png'}}" />
+  </div>
+  <h1 class="name__item" th:text="${item.name}"></h1>
+</section>
+<!-- END ITEM -->
+
+<!-- RICO EM VITAMINAS -->
+<!-- RICO EM VITAMINAS -->
+<!-- RICO EM VITAMINAS -->
+<!-- RICO EM VITAMINAS -->
+<!-- RICO EM VITAMINAS -->
+<form method="post" th:action="@{/save/{id}(id=${item.id})}" th:object="${item}">
+  <section class="container" id="item__description">
+    <div class="item__description__container">
+      <h2>Nutrientes</h2>
+      <p>Consumir uma pera por dia é uma forma simples de aumentar a ingestão de nutrientes, uma vez que uma pera média
+        contém quantidades significativas de vitamina C, vitamina K, potássio e cobre. Além disso, a fruta também possui
+        pequenas quantidades de cálcio, ferro, magnésio, proteínas, folato, niacina e outros nutrientes.</p>
+      <h2>Saúde do trato digestivo</h2>
+      <p>Além de possuir diversas vitaminas e minerais, a pera também é rica em fibras, tanto que uma pera média oferece
+        cerca de 20% da dose diária recomendada desse nutriente. Por esse motivo, essa fruta pode ser uma ótima aliada
+        para melhorar o funcionamento do intestino, ajudando a combater a prisão de ventre. A pectina, uma das fibras
+        solúveis encontradas na pera, também ajuda a manter a flora intestinal saudável.</p>
+      <h2>Prevenção de doenças</h2>
+      <p>Com suas propriedades antioxidantes e anti-inflamatórias, as peras ajudam a prevenir diversas doenças, como
+        câncer, diabetes e doenças cardiovasculares. Entre os principais componentes responsáveis por essas
+        propriedades, estão os flavonoides, os carotenoides e as antocianinas.</p>
+      <h2>Controle de peso</h2>
+      <p>Além do baixo índice glicêmico, as altas quantidades de água e de fibras da pera contribuem para a perda de
+        peso, uma vez que esses nutrientes promovem uma maior saciedade. Assim, essa fruta pouco calórica e muito
+        nutritiva pode fazer parte de uma dieta de emagrecimento saudável.</p>
+      <h2>Ação antioxidante</h2>
+      <p>Os antioxidantes são substâncias que combatem a ação degenerativa dos radicais livres no organismo, ou seja,
+        previnem o envelhecimento precoce e combatem a deterioração das células. Entre os principais antioxidantes das
+        peras, estão a vitamina C, a vitamina K e o cobre.
+      </p>
+    </div>
+  </section>
+  <!-- END DESCRIPTION -->
+
+  <!-- NAVBAR -->
+  <div th:fragment="frag__navbar">
+    <div class="header__navbar">
+      <nav class="navbar container">
+        <a th:href="@{/index}">
+          <i data-lucide="home" class="navbar__home"></i>
+        </a>
+        <a th:href="@{my-list}">
+          <i data-lucide="list-checks" class="navbar__icon"></i>
+        </a>
+        <button type="submit" class="navbar__content-circle">
+          <i th:attr="data-lucide=${selected}" class="navbar__search"></i>
+        </button>
+
+        <!-- <button type="submit" class="navbar__content-circle">
+          <i data-lucide="check" class="navbar__search"></i>
+        </button> -->
+        <div class="navbar__circle-shadow"></div>
+        <div class="navbar__circle"></div>
+      </nav>
+    </div>
+  </div>
+</form>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  lucide.createIcons();
+</script>
+</body>
+
+</html>
