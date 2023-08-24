@@ -80,11 +80,11 @@ public class UserController {
         return "home/index";
       } else {
         model.addAttribute("msgErro", "Usuário ou senha inválidos. Tente novamente.");
-        return "/login/login.html";
+        return "login/login.html";
       }
     } catch (Exception e) {
       model.addAttribute("msgErro", "Usuário ou senha inválidos. Tente novamente.");
-      return "/login/login.html";
+      return "login/login.html";
     }
   }
 }

@@ -33,7 +33,7 @@ public class ItemController {
   @GetMapping("/salvar")
   public ModelAndView addToList(Lista lista) {
     ModelAndView mv = new ModelAndView();
-    mv.setViewName("/item/item.html");
+    mv.setViewName("item/item.html");
     mv.addObject("lista", new Lista()); /* Cria um vazio */
     return mv;
   }
