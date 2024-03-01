@@ -15,4 +15,7 @@ Este é um aplicativo web progressivo (PWA) desenvolvido para ser usado exclusiv
 - Criação de listas de compras: Os usuários podem criar suas próprias listas de compras, adicionando itens de uma vasta seleção de alimentos naturais.
 - Informações nutricionais: O aplicativo fornece dicas e informações nutricionais sobre os alimentos adicionados à lista de compras.
 - Instalação na tela inicial: Os usuários podem instalar o aplicativo na tela inicial de seus dispositivos móveis para acesso rápido e fácil.
-![barraca-do-inu](https://github.com/0xPaulo/aplicativo-android-pwa-faculdade/assets/102301140/dee701f4-2796-4be0-a6d2-ecb1bbc612da)
+
+
+
+![app](https://github.com/0xPaulo/aplicativo-android-pwa-faculdade/assets/102301140/2bf8acaf-df30-4ea0-96f1-947fe77ca5d7)
